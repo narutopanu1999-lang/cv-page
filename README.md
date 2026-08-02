@@ -14,3 +14,5 @@ This project demonstrates clean HTML5 structure, accessibility, and basic web pu
       ├── index.html        # Main CV page
       ├── favicon.png       # Favicon for the site
       └── README.md         # Project documentation
+## 📂 Project URL
+https://narutopanu1999-lang.github.io/cv-page/
