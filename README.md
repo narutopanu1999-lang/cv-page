@@ -1,18 +1,22 @@
 # Single-Page CV
 
-A simple, semantic HTML CV page built with SEO meta tags, Open Graph (OG) tags, and favicon support.  
-This project demonstrates clean HTML5 structure, accessibility, and basic web publishing practices.
+A playful, responsive CV page published with GitHub Pages and Jekyll. It keeps unfilled personal details visibly marked as placeholders rather than inventing credentials or contact information.
 
-## 🚀 Features
-- Semantic HTML structure (`header`, `section`, `article`, `footer`, `address`)
-- SEO meta tags for better search engine visibility
-- Open Graph (OG) tags for rich social media previews
-- Favicon support for branding
-- Responsive layout with system fonts
+This is a fun little project, not a serious résumé—please don’t take it too seriously.
 
-## 📂 Project Structure
-      ├── index.html        # Main CV page
-      ├── favicon.png       # Favicon for the site
-      └── README.md         # Project documentation
-## 📂 Project URL
+## Features
+
+- Semantic CV sections with in-page navigation
+- Responsive layout, keyboard focus styles, and reduced-motion support
+- Print-friendly styling
+- Skills and supplied CV details presented without adding new qualifications
+
+## Project structure
+
+- `index.html` — CV content and page styling
+- `favicon.png` — site favicon
+- `README.md` — project documentation
+
+## Project URL
+
 https://narutopanu1999-lang.github.io/cv-page/

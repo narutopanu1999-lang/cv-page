@@ -3,66 +3,456 @@ layout: default
 title: "Xyz - Junior Frontend Developer"
 ---
 
-<header>
-  <h1>Xyz</h1>
-  <h2>Junior Frontend Developer</h2>
-  <address>
-    123 Street<br>
-    X City, ST 12345<br>
-    (123) 456-7890<br>
-    <a href="mailto:no_reply@example.com">no_reply@example.com</a>
-  </address>
-</header>
+<style>
+  :root {
+    color-scheme: light;
+    --ink: #1e2c27;
+    --muted: #586a62;
+    --accent: #176b4b;
+    --accent-dark: #10543a;
+    --line: #dce6df;
+    --paper: #ffffff;
+    --wash: #f2f6f2;
+    --tint: #e8f3ec;
+  }
 
-<main>
-  <section>
-    <h2>Skills</h2>
-    <p>HTML, CSS, JavaScript, Accessibility, Figma to Design, Responsive Web Design, Technical Writing, Presentation</p>
-  </section>
+  html {
+    scroll-behavior: smooth;
+  }
 
-  <section>
-    <h2>Education</h2>
-    <h3>School Name, Location - Degree</h3>
-    <p>Month 20xx to Month 20xx</p>
-    <ul>
-      <li>It was shit experience</li>
-      <li>It felt less like university and more like some place for all idiots</li>
-      <li>Learned nothing but made things more complicated</li>
-    </ul>
-  </section>
+  body {
+    margin: 0;
+    background: var(--wash);
+    color: var(--ink);
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    line-height: 1.6;
+  }
 
-  <section>
-    <h2>Experience</h2>
+  a {
+    color: var(--accent-dark);
+    text-underline-offset: 0.18em;
+  }
 
-    <article>
-      <h3>No Company, No Location - Unemployed</h3>
-      <p>Month 20xx to Month 20xx</p>
-      <ul>
-        <li>Nothing achieved in life</li>
-        <li>What do I have? Nothing</li>
-        <li>But one day will have a lot people won't even imagine</li>
+  a:hover {
+    text-decoration-thickness: 2px;
+  }
+
+  a:focus-visible,
+  button:focus-visible {
+    outline: 3px solid #d37b24;
+    outline-offset: 3px;
+  }
+
+  .cv {
+    width: min(100% - 2rem, 900px);
+    margin: 3rem auto;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    background: var(--paper);
+    box-shadow: 0 20px 60px rgb(30 44 39 / 8%);
+  }
+
+  .hero {
+    padding: clamp(2rem, 7vw, 4.5rem);
+    background:
+      radial-gradient(ellipse at 100% 0%, rgb(255 255 255 / 64%), transparent 42%),
+      var(--tint);
+  }
+
+  .eyebrow,
+  .section-kicker {
+    margin: 0 0 0.6rem;
+    color: var(--accent-dark);
+    font-size: 0.76rem;
+    font-weight: 750;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  h1,
+  h2,
+  h3,
+  p {
+    margin-top: 0;
+  }
+
+  h1 {
+    margin-bottom: 0.15rem;
+    font-size: clamp(2.7rem, 9vw, 5rem);
+    letter-spacing: -0.065em;
+    line-height: 1;
+  }
+
+  .role {
+    margin: 0;
+    color: var(--muted);
+    font-size: clamp(1.15rem, 3vw, 1.55rem);
+    font-weight: 550;
+  }
+
+  .intro {
+    max-width: 38rem;
+    margin: 1.4rem 0 0;
+    color: #354840;
+    font-size: 1.05rem;
+  }
+
+  address {
+    margin-top: 2rem;
+    color: var(--muted);
+    font-size: 0.93rem;
+    font-style: normal;
+  }
+
+  .section-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding: 1rem clamp(1.25rem, 5vw, 3rem);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .section-nav a {
+    border-radius: 999px;
+    padding: 0.35rem 0.75rem;
+    background: var(--wash);
+    color: var(--ink);
+    font-size: 0.86rem;
+    font-weight: 650;
+    text-decoration: none;
+  }
+
+  .section-nav a:hover {
+    background: var(--tint);
+    color: var(--accent-dark);
+  }
+
+  .content {
+    padding: 0 clamp(1.25rem, 5vw, 3rem);
+  }
+
+  .cv-section {
+    padding: 2.2rem 0;
+    border-bottom: 1px solid var(--line);
+    scroll-margin-top: 1rem;
+  }
+
+  .cv-section:last-child {
+    border-bottom: 0;
+  }
+
+  .section-heading {
+    margin-bottom: 1.15rem;
+    font-size: 1.55rem;
+    letter-spacing: -0.035em;
+    line-height: 1.2;
+  }
+
+  .skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.55rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .skills li {
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 0.38rem 0.75rem;
+    background: #fff;
+    font-size: 0.9rem;
+  }
+
+  .entry + .entry {
+    margin-top: 1.8rem;
+    padding-top: 1.6rem;
+    border-top: 1px dashed var(--line);
+  }
+
+  .entry h3 {
+    margin-bottom: 0.25rem;
+    font-size: 1.08rem;
+    line-height: 1.4;
+  }
+
+  .entry-meta {
+    margin-bottom: 0.75rem;
+    color: var(--muted);
+    font-size: 0.9rem;
+  }
+
+  .entry ul {
+    margin: 0.5rem 0 0;
+    padding-left: 1.25rem;
+  }
+
+  .entry li + li {
+    margin-top: 0.3rem;
+  }
+
+  footer {
+    padding: 1.5rem clamp(1.25rem, 5vw, 3rem);
+    background: var(--wash);
+    color: var(--muted);
+    font-size: 0.9rem;
+  }
+
+  footer p {
+    margin: 0;
+  }
+
+  .social-links {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.65rem;
+    margin: 0.9rem 0 0;
+  }
+
+  .social-links a {
+    display: inline-flex;
+    min-height: 2.75rem;
+    align-items: center;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 0.45rem 0.9rem;
+    background: var(--paper);
+    color: var(--accent-dark);
+    font-weight: 650;
+    text-decoration: none;
+    touch-action: manipulation;
+    transition: transform 180ms ease;
+  }
+
+  .social-links a:hover {
+    text-decoration: underline;
+    text-underline-offset: 0.18em;
+  }
+
+  .laugh {
+    display: inline-block;
+    margin-left: 0.2rem;
+    opacity: 0;
+    transform: scale(0.7) rotate(-12deg);
+  }
+
+  .laugh.is-laughing {
+    animation: laugh-pop 600ms ease-out both;
+  }
+
+  @keyframes laugh-pop {
+    35% {
+      opacity: 1;
+      transform: scale(1.25) rotate(12deg);
+    }
+
+    100% {
+      opacity: 0;
+      transform: scale(1) rotate(0);
+    }
+  }
+
+  @media (max-width: 540px) {
+    .cv {
+      width: 100%;
+      margin: 0;
+      border: 0;
+      border-radius: 0;
+    }
+
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    .social-links a,
+    .laugh.is-laughing {
+      animation: none;
+      transition: none;
+    }
+
+    .laugh.is-laughing {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  @media print {
+    body {
+      background: #fff;
+      color: #000;
+      font-size: 10.5pt;
+    }
+
+    .cv {
+      width: 100%;
+      margin: 0;
+      border: 0;
+      border-radius: 0;
+      box-shadow: none;
+    }
+
+    .hero,
+    footer {
+      background: #fff;
+    }
+
+    .section-nav {
+      display: none;
+    }
+
+    .social-links a {
+      min-height: 0;
+      border: 0;
+      padding: 0;
+    }
+
+    .cv-section,
+    .entry {
+      break-inside: avoid;
+    }
+
+    a {
+      color: inherit;
+    }
+  }
+</style>
+
+<div class="cv">
+  <header class="hero">
+    <p class="eyebrow">Curriculum vitae · work in progress</p>
+    <h1>Xyz</h1>
+    <p class="role">Junior Frontend Developer</p>
+    <p class="intro">The page is polished. Some of the details are still looking for their keys.</p>
+    <address>Contact details: add an email, location, or phone number here (no fictional numbers, promise).</address>
+  </header>
+
+  <nav class="section-nav" aria-label="CV sections">
+    <a href="#skills">Skills</a>
+    <a href="#education">Education</a>
+    <a href="#experience">Experience</a>
+  </nav>
+
+  <div class="content">
+    <section class="cv-section" id="skills" aria-labelledby="skills-heading">
+      <p class="section-kicker">The toolkit</p>
+      <h2 class="section-heading" id="skills-heading">Skills</h2>
+      <ul class="skills">
+        <li>HTML</li>
+        <li>CSS</li>
+        <li>JavaScript</li>
+        <li>Accessibility</li>
+        <li>Figma to Design</li>
+        <li>Responsive Web Design</li>
+        <li>Technical Writing</li>
+        <li>Presentation</li>
       </ul>
-      <p>Skills: Loading...</p>
-    </article>
+    </section>
 
-    <article>
-      <h3>No Company Name, No Location - Lol Job</h3>
-      <p>Month 20xx to Month 20xx</p>
-      <ul>
-        <li>Achievements still Loading...</li>
-        <li>Achievements still Loading...</li>
-        <li>Achievements still Loading...</li>
-      </ul>
-      <p>Skills: Loading...</p>
-    </article>
-  </section>
+    <section class="cv-section" id="education" aria-labelledby="education-heading">
+      <p class="section-kicker">The learning chapter</p>
+      <h2 class="section-heading" id="education-heading">Education</h2>
+      <article class="entry">
+        <h3>School Name, Location <span aria-hidden="true">·</span> Degree</h3>
+        <p class="entry-meta">Month 20xx – Month 20xx <span>(replace with actual details)</span></p>
+        <ul>
+          <li>Review score: not glowing.</li>
+          <li>Made simple ideas impressively complicated.</li>
+          <li>Learning outcomes: still under review.</li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="cv-section" id="experience" aria-labelledby="experience-heading">
+      <p class="section-kicker">The plot so far</p>
+      <h2 class="section-heading" id="experience-heading">Experience</h2>
+
+      <article class="entry">
+        <h3>No Company, No Location <span aria-hidden="true">·</span> Unemployed</h3>
+        <p class="entry-meta">Month 20xx – Month 20xx <span>(replace with actual details)</span></p>
+        <ul>
+          <li>Career highlights: currently buffering.</li>
+          <li>Big plans; proof points still need adding.</li>
+        </ul>
+      </article>
+
+      <article class="entry">
+        <h3>No Company Name, No Location <span aria-hidden="true">·</span> “Lol Job”</h3>
+        <p class="entry-meta">Month 20xx – Month 20xx <span>(replace with actual details)</span></p>
+        <ul>
+          <li>Achievements: still loading (the progress bar is fictional).</li>
+          <li>Role details: TBD; the joke got here first.</li>
+        </ul>
+      </article>
+    </section>
+  </div>
 
   <footer>
-    <h2>Across the Internet</h2>
-    <p>
-      LinkedIn: <a href="https://linkedin.com/in/xyz">xyz/linkedin.com</a> &nbsp;&nbsp;
-      GitHub &nbsp;&nbsp;
-      OFans
-    </p>
+    <p><strong>Across the internet:</strong> headquarters of the internet, not personal profiles.</p>
+    <nav class="social-links" aria-label="Social website homepages">
+      <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn homepage">LinkedIn</a>
+      <a href="https://x.com/" target="_blank" rel="noopener noreferrer" aria-label="Twitter / X homepage">Twitter / X</a>
+      <a href="https://mail.google.com/" target="_blank" rel="noopener noreferrer" aria-label="Gmail homepage">Gmail</a>
+      <span class="laugh" aria-hidden="true">😂</span>
+    </nav>
+    <p class="social-hint">Mouse hover makes each link dodge once; keyboard and touch stay put.</p>
   </footer>
-</main>
+</div>
+
+<script>
+  (() => {
+    const socialLinks = document.querySelector(".social-links");
+    const links = Array.from(socialLinks.querySelectorAll("a"));
+    const laugh = socialLinks.querySelector(".laugh");
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    let laughTimer;
+
+    socialLinks.addEventListener("pointermove", (event) => {
+      if (
+        event.pointerType !== "mouse" ||
+        reducedMotion.matches ||
+        !window.matchMedia("(hover: hover) and (pointer: fine)").matches
+      ) {
+        return;
+      }
+
+      links.forEach((link) => {
+        if (link.dataset.dodged === "true") {
+          return;
+        }
+
+        const bounds = link.getBoundingClientRect();
+        const distance = Math.hypot(
+          event.clientX - (bounds.left + bounds.width / 2),
+          event.clientY - (bounds.top + bounds.height / 2),
+        );
+
+        if (distance <= 38) {
+          const horizontal = event.clientX < bounds.left + bounds.width / 2 ? 1 : -1;
+          const vertical = event.clientY < bounds.top + bounds.height / 2 ? 1 : -1;
+          link.style.transform = `translate(${horizontal * 18}px, ${vertical * 12}px)`;
+          link.dataset.dodged = "true";
+
+          laugh.classList.remove("is-laughing");
+          window.requestAnimationFrame(() => laugh.classList.add("is-laughing"));
+          window.clearTimeout(laughTimer);
+          laughTimer = window.setTimeout(() => {
+            laugh.classList.remove("is-laughing");
+          }, 650);
+        }
+      });
+    });
+
+    socialLinks.addEventListener("pointerleave", () => {
+      links.forEach((link) => {
+        link.style.removeProperty("transform");
+        delete link.dataset.dodged;
+      });
+    });
+  })();
+</script>
