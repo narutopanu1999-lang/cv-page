@@ -2,7 +2,7 @@
 
 A playful, responsive CV page published with GitHub Pages and Jekyll. It keeps unfilled personal details visibly marked as placeholders rather than inventing credentials or contact information.
 
-This is a fun little project, not a serious résumé—please don’t take it too seriously.
+This is a fun little project, not a serious resume—please don’t take it too seriously.
 
 ## Features
 
